@@ -1,0 +1,50 @@
+<div class="content">
+  <% if tweet.errors.any? %>
+    <div class="box">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong><%= pluralize(tweet.errors.count, "error") %> prohibited this article from being saved:</strong>
+              <br>
+              <ul>
+                <% tweet.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="columns is-multiline">
+    <div class="column is-6 is-offset-3">
+      <%= form_with model: article, local: true do |form|%>
+        <div class="card">
+          <div class="field">
+            <div class="control">
+              <%= form.label :title %>
+              <%= form.text_field :title, class: "input is-primary", type: "text"%>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <%= form.label :body %>
+              <%= form.text_area :body, class: "input is-large", type: "textarea" %>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <p>
+              <%= form.submit button_name, class: "button is-primary is-light" %>
+              <%= link_to 'Back', root_path, class: "button is-primary is-light" %>
+            </p>
+          </footer>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

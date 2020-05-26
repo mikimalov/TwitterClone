@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="columns">
+    <div class="column is-offset-one-quarter">
+      <p class="title">
+        <%= @tweet.title %>
+      </p>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column is-offset-one-quarter">
+      <p class="subtitle">
+        <%= @tweet.body %>
+      </p>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column is-offset-one-quarter">
+      <div class="button is-primary is-light">
+        <%= link_to "Back", root_path %>
+      </div>
+    </div>
+  </div>
+</div>
