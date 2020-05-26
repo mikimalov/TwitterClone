@@ -43,6 +43,6 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweets).permit(:title, :body)
+    params.require(:tweet).permit(:title, :body)
   end
 end

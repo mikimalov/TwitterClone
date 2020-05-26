@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="columns is-multiline">
+    <div class="column is-6 is-offset-3">
+      <% coms.each do |coms| %>
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>coms.comenter</strong>
+                <br>
+                <%= coms.body %>
+              </p>
+            </div>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</div>
