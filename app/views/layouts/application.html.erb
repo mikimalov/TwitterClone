@@ -10,10 +10,16 @@
   </head>
 
   <body>
-    <section class="section">
-      <%= render "shared/nav_bar" %>
-      <%= yield %>
-      <%= render "shared/footer" %>
+    <section class="hero is-link is-fullheight">
+      <section class="section">
+        <%= render "shared/nav_bar" %>
+      </section>
+
+        <%= yield %>
+ 
+
+        <%= render "shared/footer" %>
+
     </section>
   </body>
 </html>

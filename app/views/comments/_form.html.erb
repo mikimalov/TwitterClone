@@ -1,0 +1,35 @@
+
+
+<section class="section">
+  <div class="has-background-primary">
+    <%= form_with model: [tweet, comment], local: true do |form|%>
+      <div class="has-background-link">
+        <div class="container ">
+          <div class="card">
+            <div class="has-background-link">
+              <div class="field">
+                <div class="control">
+                  <%= form.label :title, class: "button is-primary"%>
+                  <%= form.text_field :title, class: "input is-primary ", type: "text"%>
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <%= form.label :body, class: "button is-primary"%>
+                  <%= form.text_area :body, class: "input is-large ", type: "textarea" %>
+                </div>
+              </div>
+              <footer class="card-footer">
+                <p>
+                  <%= form.submit button, class: "button is-primary" %>
+                  <%= link_to 'Back', root_path, class: "button is-primary is-light" %>
+                </p>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  </div>
+</section>

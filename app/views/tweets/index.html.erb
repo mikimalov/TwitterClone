@@ -1,59 +1,20 @@
-<div class="container">
-  <div class="columns is-multiline">
-    <div class="column is-6 is-offset-3">
+<% @tweets.each do |tweet| %>
+  <section class="section">
+    <div class="container">
       <div class='content'>
-        <h1><strong> Tweets </strong></h1>
+        <header class="card-header text-is-offset-one-quarter">
+          <h1><strong><%= tweet.title %> </strong></h1>
+        </header>
       </div>
-    </div>
-
-    <% @tweets.each do |tweet| %>
-      <div class="column is-6 is-offset-3">
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">
-              <%= tweet.title %>
-            </p>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              <%= tweet.body %>
-            </div>
-          </div>
-
+      <div class="container">
+        <div class="content">
           <footer class="card-footer">
-            <%= link_to 'Show', tweet_path(tweet.id), class: "card-footer-item is-outlined"%>
-            <%= link_to "Edit", edit_tweet_path(tweet), class: "card-footer-item" %>
-            <%= link_to "Comments", new_comment_path, class: "card-footer-item" %>
-            <%= link_to "Delete", tweet_path(tweet), method: :delete, data: { confirm: "Are you sure you want to delete this article?"}, class: "card-footer-item" %>
+            <%= link_to 'Show', tweet_path(tweet.id), class: "card-footer-item button is-primary"%>
+            <%= link_to "Edit", edit_tweet_path(tweet), class: "card-footer-item button is-primary" %>
+            <%= link_to "Delete", tweet_path(tweet), method: :delete, data: { confirm: "Are you sure you want to delete this article?"}, class: "card-footer-item button is-primary" %>
           </footer>
         </div>
       </div>
-    <% end %>
-  </div>
-</div>
-
-<div class="container">
-  <div class="columns is-multiline">
-    <div class="column is-6 is-offset-3">
-      <article class="media">
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>John Smith</strong>
-              <br>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-            </p>
-          </div>
-        </div>
-      </article>
     </div>
-  </div>
-</div>
-
-<div class="modal">
-  <div class="modal-background"></div>
-    <div class="modal-content">
-      <!-- Any other Bulma elements you want -->
-    </div>
-  <button class="modal-close is-large" aria-label="close"></button>
-</div>
+  </section>
+<% end %>
