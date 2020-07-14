@@ -6,33 +6,37 @@
     <div class="content">
       <%= @tweet.body %>
     </div>
+    <%= link_to  "", tweet_likes_path(:tweet_id), method: :post, class: "fa fa-thumbs-up"%>
   </section>
   <section class="section">
     <div class="content">
-      <%= link_to "Leave Comment", new_tweet_comment_path(@tweet), class: " button is-link" %>
-      <%= link_to 'Back', root_path, class: "button is-link"%>
+      <%= link_to "Leave Comment", new_tweet_comment_path(@tweet), class: " button is-link is-rounded" %>
+      <%= link_to 'Back', root_path, class: "button is-link is-rounded"%>
     </div>
   </section>
   <div class="container">
     <section class="section">
       <% @tweet.comments.each do |comment| %>
-        <div class="content">
-          <p>
-            <strong><%= comment.commenter %></strong><%=time_ago_in_words(comment.created_at) %> ago
-            <br>
-            <strong><%= comment.body %></strong>
-          </p>
-        </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <%= link_to edit_tweet_comment_path(comment), class: "level-item has-text-primary-dark" do %>
-              <span class="icon is-small has-text-primary-dark"><i class="fas fa-edit"></i></span>
-            <% end %>
-            <%= link_to tweet_comment_path(comment), method: :delete , class: "level-item", data: { confirm: "Are you sure you want to delete this comment?" } do %>
-              <span class="icon is-small"><i class="fas fa-trash-alt"></i></span>
-            <% end %>
+          <div class="content">
+            <p>
+              <strong><%= comment.commenter %></strong> <%= time_ago_in_words(comment.created_at) %> ago
+              <br>
+              <strong><%= comment.body %></strong>
+            </p>
           </div>
-        </nav>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <%# <%= link_to likes_path, method: :post, class: "level-item has-text-primary-dark" do %> %>
+                <%# <i class="fa fa-thumbs-up" aria-hidden="true"></i> %>
+              <%# <% end %> %>
+              <%= link_to edit_tweet_comment_path(comment.tweet, comment), class: "level-item has-text-primary-dark" do %>
+                <span class="icon is-small has-text-primary-dark"><i class="fas fa-edit"></i></span>
+              <% end %>
+              <%= link_to tweet_comment_path(comment.tweet, comment), method: :delete , class: "level-item", data: { confirm: "Are you sure you want to delete this comment?" } do %>
+                <span class="icon is-small"><i class="fas fa-trash-alt"></i></span>
+              <% end %>
+            </div>
+          </nav>
       <% end %>
     </section>
   </div>

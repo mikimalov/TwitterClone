@@ -1,48 +1,48 @@
-<div class="content">
-  <% if tweet.errors.any? %>
-    <div class="has-background-link">
-      <div class="container ">
-        <article class="media">
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong><%= pluralize(tweet.errors.count, "error") %> prohibited this article from being saved:</strong>
-                <br>
-                <ul>
-                  <% tweet.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                  <% end %>
-                </ul>
-              </p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  <% end %>
-</div>
 <section class="section">
   <%= form_with model: tweet, local: true do |form|%>
     <div class="has-background-link">
       <div class="container ">
         <div class="card">
           <div class="has-background-link">
+            <div class="content">
+              <% if tweet.errors.any? %>
+                <div class="has-background-link">
+                  <div class="container ">
+                    <article class="media">
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <strong><%= pluralize(tweet.errors.count, "error") %> prohibited this article from being saved:</strong>
+                            <br>
+                            <ul>
+                              <% tweet.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                              <% end %>
+                            </ul>
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              <% end %>
+            </div>
             <div class="field">
               <div class="control">
-                <%= form.label :title, class: "button is-primary"%>
-                <%= form.text_field :title, class: "input is-primary ", type: "text"%>
+                <%= form.label :title, class: "button is-primary is-rounded"%>
+                <%= form.text_field :title, class: "input is-primary is-rounded", type: "text"%>
               </div>
             </div>
             <div class="field">
               <div class="control">
-                <%= form.label :body, class: "button is-primary"%>
-                <%= form.text_area :body, class: "input is-large ", type: "textarea" %>
+                <%= form.label :body, class: "button is-primary is-rounded"%>
+                <%= form.text_area :body, class: "input is-large is-rounded", type: "textarea" %>
               </div>
             </div>
             <footer class="card-footer">
               <p>
-                <%= form.submit button_name, class: "button is-primary" %>
-                <%= link_to 'Back', root_path, class: "button is-primary is-light" %>
+                <%= form.submit button_name, class: "button is-primary is-rounded" %>
+                <%= link_to 'Back', root_path, class: "button is-primary is-light is-rounded" %>
               </p>
             </footer>
           </div>

@@ -13,6 +13,7 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.new(tweet_params)
+    @tweet.user = current_user
     if @tweet.save
       redirect_to @tweet
     else
@@ -26,8 +27,12 @@ class TweetsController < ApplicationController
 
   def update
     @tweet = Tweet.find(params[:id])
-    if @tweet.update(tweet_params)
-      redirect_to @tweet
+    if valid_user?(@tweet.user)
+      if @tweet.update(tweet_params)
+        redirect_to @tweet
+      else
+        render :edit
+      end
     else
       render :edit
     end
@@ -35,9 +40,12 @@ class TweetsController < ApplicationController
 
   def destroy
     @tweet = Tweet.find(params[:id])
-    @tweet.destroy
-
-    redirect_to tweets_path
+    if valid_user?(@tweet.user)
+      @tweet.destroy
+      redirect_to tweets_path
+    else
+      redirect_to root_path
+    end
   end
 
   private

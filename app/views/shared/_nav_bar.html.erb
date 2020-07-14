@@ -1,10 +1,16 @@
-
 <nav class="navbar-menu is-active">
   <div class='navbar-start'>
-    <%= link_to "New Tweet", new_tweet_path, class: "button is-primary has-text-weight-bold"%>
+   <%= link_to "Home", root_path, class: "button is-primary is-rounded has-text-weight-bold"%>
   </div>
-
-  <div class='navbar-end'>
-    <%= link_to "Comments", root_path, class: "button is-primary has-text-weight-bold" %>
+  <div class='navbar-end '>
+    <div class="container">
+      <% if user_present %>
+        <%= link_to "New Tweet", new_tweet_path, class: "button is-primary is-rounded has-text-weight-bold"%>
+        <%= link_to "Log Out", logout_path, method: :delete, class: "button is-primary is-rounded has-text-weight-bold"%>
+      <% else %>
+        <%= link_to "Log in", login_path, class: "button is-primary is-rounded has-text-weight-bold"%>
+        <%= link_to "Sign Up", signup_path, class: "button is-primary is-rounded has-text-weight-bold" %>
+      <% end %>
+    </div>
   </div>
 </nav>

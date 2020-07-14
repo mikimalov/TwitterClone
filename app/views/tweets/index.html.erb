@@ -1,19 +1,26 @@
 <% @tweets.each do |tweet| %>
   <section class="section">
-    <div class="container">
-      <div class='content'>
-        <header class="card-header text-is-offset-one-quarter">
-          <h1><strong><%= tweet.title %> </strong></h1>
-        </header>
-      </div>
-      <div class="container">
-        <div class="content">
-          <footer class="card-footer">
-            <%= link_to 'Show', tweet_path(tweet.id), class: "card-footer-item button is-primary"%>
-            <%= link_to "Edit", edit_tweet_path(tweet), class: "card-footer-item button is-primary" %>
-            <%= link_to "Delete", tweet_path(tweet), method: :delete, data: { confirm: "Are you sure you want to delete this article?"}, class: "card-footer-item button is-primary" %>
-          </footer>
+    <div class="column is-6 is-offset-3">
+      <div class="card has-background-primary ">
+        <%# <% unless local_assigns[:show] %>
+          <header class="card-header is-rounded">
+            <p class="card-header-title ">
+              <%= tweet.title %>
+            </p>
+          </header>
+        <%# <% end %>
+        <div class="card-content">
+          <div class="content">
+            <p><%= tweet.body %></p>
+          </div>
         </div>
+        <footer class="card-footer ">
+          <%= link_to 'Show', tweet_path(tweet.id), class: "card-footer-item button is-primary is-rounded"%>
+          <% if user_present && valid_user?(tweet.user) %>
+            <%= link_to "Edit", edit_tweet_path(tweet), class: "card-footer-item button is-primary is-rounded" %>
+            <%= link_to "Delete", tweet_path(tweet), method: :delete, data: { confirm: "Are you sure you want to delete this article?"}, class: "card-footer-item button is-primary is-rounded" %>
+          <% end %>
+        </footer>
       </div>
     </div>
   </section>

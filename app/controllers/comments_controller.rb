@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:tweet_id])
+    @comment = Comment.find(params[:id])
     @tweet = @comment.tweet
   end
 
